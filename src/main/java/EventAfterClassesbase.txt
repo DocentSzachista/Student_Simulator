@@ -1,6 +1,24 @@
-Wydarzenie przykładowe Wygrywasz przegrywasz
-Inteligencja
-2
-Wydarzenie 2
+Wyjście na piwo z kolegami ze starszego rocznika. Jeśli studenta polubią to podzielą się notatkami.
 Spryt
 3
+Poznanie ziomka z wyższego roku, który potrzebuje pomocy z programem, dzięki czemu student zdobywa nowe umiejętności.
+Inteligencja
+4
+Nawiedza Cię duch sławnego magistra z brodą, dzięki któremu jesteś w stanie się uczyć po zajęciach.
+Inteligencja
+5
+Impreza na Wyspie. Znowu student nie uczy się a imprezuje.
+Lenistwo
+10
+Zostajesz mianowany królem wyspy. Dzięki temu dostajesz notatki i nie musisz się uczyć.
+Lenistwo
+3
+Tramwaj się wykoleił. Nie masz czasu się pouczyć.
+Inteligencja
+10
+Szukając opracowań na internecie Student pobiera wirusa. Jeśli podstępem go nie wyizoluje skończy bez komputera na 2 dni.
+Spryt
+6
+Zamiast się uczyć Student gra cały dzień w grę.
+Lenistwo
+10
