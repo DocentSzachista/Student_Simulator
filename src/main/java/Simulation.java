@@ -79,8 +79,7 @@ public class Simulation
                     ScientificEvent Event= plan.get(day).randomEvent(student);
                     Event.setSubject(plan.get(day));
                     Event.evaluateStudent(student);
-                    System.out.println(plan.get(day).getScore());
-
+                    System.out.println("Obecna średnia z " + plan.get(day) + " to: " + plan.get(day).getScore());
                 }
                 student.removeExpiredStatisticChanges();
             }

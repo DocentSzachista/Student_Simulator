@@ -9,19 +9,23 @@ public class ScientificEvent extends EventBase{
     @Override
     public void evaluateStudent(Student student)
     {
+        System.out.println(description);
         int statDifference = student.getStatistic(typeOfStatistic) - requiredStatistic;
         if(statDifference >= 0)
         {
+            int markToAdd = 3;
             if(statDifference >= requiredStatistic)
-                subject.addMark(5);
+                markToAdd = 5;
             else if((float)statDifference >= (float)requiredStatistic * .5f)
-                subject.addMark(4);
-            else
-                subject.addMark(3);
+                markToAdd = 4;
+
+            subject.addMark(markToAdd);
+            System.out.println("Udało się, otrzymałeś ocene: " + markToAdd);
         }
         else
         {
             subject.addMark(2);
+            System.out.println("Nie udało się, otrzymałeś ocene: 2");
         }
     }
 
