@@ -74,8 +74,9 @@ public class Subject
 	{
 		Random random= new Random();
 		List<ScientificEvent> lista = events.getListAfterSchool();
-		ScientificEvent event =  lista.get(random.nextInt(lista.size()));
-		lista.remove(random.nextInt(lista.size()));
+		int index=random.nextInt(lista.size());
+		ScientificEvent event =  lista.get(index);
+		lista.remove(index);
 		 return  event;
 
 

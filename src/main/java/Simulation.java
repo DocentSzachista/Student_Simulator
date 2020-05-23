@@ -71,6 +71,7 @@ public class Simulation
                 if(day == 5)
                 {
                     System.out.println("Weekend! Brak zajęć");
+                    
                 }
                 else
                 {
@@ -79,6 +80,7 @@ public class Simulation
                     Event.setSubject(plan.get(day));
                     Event.evaluateStudent(student);
                     System.out.println(plan.get(day).getScore());
+
                 }
                 student.removeExpiredStatisticChanges();
             }
