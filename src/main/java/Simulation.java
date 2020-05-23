@@ -16,39 +16,20 @@ public class Simulation
 
     public static void main(String[] args)
     {
-        //Dodanie przedmiotów do listy z której będą losowane
-        allSubjects.add(new Subject("Matematyka"));
-        allSubjects.add(new Subject("Filozofia"));
-        allSubjects.add(new Subject("Programowanie"));
-        allSubjects.add(new Subject("Miernictwo"));
-        allSubjects.add(new Subject("Fizyka"));
+        addToList(allSubjects);
         //Skaner do zatrzymywania symulacji
         Scanner scanner = new Scanner(System.in);
         System.out.println("Nacisnij Enter, żeby stworzyć studenta...");
         scanner.nextLine();
         //Stworzenie studenta
         IStudentStatGenerator generator = new StudentGenerator();
-        Student Janusz= new Student(generator);
+        Student janusz= new Student(generator);
         System.out.println("Statystyki studenta: ");
-        System.out.println(Janusz.printStats());
+        System.out.println(janusz.printStats());
         //Stworzenie jego planu zajęć
         ArrayList<Subject> plan = new ArrayList<>();
         Random rand = new Random();
-        for (int i = 0; i < 5; i++)
-        {
-            int range = allSubjects.size() - 1;
-            if(range > 1)
-            {
-                int subjectIndex = rand.nextInt(range);
-                plan.add(allSubjects.get(subjectIndex));
-                allSubjects.remove(subjectIndex);
-            }
-            else
-            {
-                plan.add(allSubjects.getFirst());
-                allSubjects.removeFirst();
-            }
-        }
+        generatePlan(plan, rand, allSubjects);
         //Wydruk planu
         System.out.println("Jego plan to: ");
         for (int i = 0; i < 5; i++)
@@ -70,9 +51,36 @@ public class Simulation
                 {
                     System.out.println("Dzisiejsze zajęcia to: " + plan.get(day));
                 }
-                Janusz.removeExpiredStatisticChanges();
+                janusz.removeExpiredStatisticChanges();
                 System.out.println("Nacisnij Enter, żeby przejść do następnego dnia...");
                 scanner.nextLine();
+            }
+        }
+    }
+    public static void addToList(LinkedList<Subject> list)
+    {
+        //Dodanie przedmiotów do listy z której będą losowane
+        list.add(new Subject("Matematyka"));
+        list.add(new Subject("Filozofia"));
+        list.add(new Subject("Programowanie"));
+        list.add(new Subject("Miernictwo"));
+        list.add(new Subject("Fizyka"));
+    }
+    public static void generatePlan(ArrayList<Subject> plan, Random rand, LinkedList<Subject> subjectList)
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            int range = subjectList.size() - 1;
+            if(range > 1)
+            {
+                int subjectIndex = rand.nextInt(range);
+                plan.add(subjectList.get(subjectIndex));
+                subjectList.remove(subjectIndex);
+            }
+            else
+            {
+                plan.add(subjectList.getFirst());
+                subjectList.removeFirst();
             }
         }
     }

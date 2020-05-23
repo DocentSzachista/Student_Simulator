@@ -3,14 +3,14 @@ public class ScientificEvent extends EventBase{
   public ScientificEvent(String description, StatisticType typeOfStatistic, int requirements ){
       this.description=description;
       this.typeOfStatistic=typeOfStatistic;
-      this.requirements=requirements;
+      this.requiredStatistic=requirements;
   }
 
     @Override
     public void evaluateStudent(Student student) {
-        if( student.getStatistic(typeOfStatistic)>requirements)
+        if( student.getStatistic(typeOfStatistic)>requiredStatistic)
         {
-            switch(student.getStatistic(typeOfStatistic)-requirements){
+            switch(student.getStatistic(typeOfStatistic)-requiredStatistic){
                 case 1: subject.addMark(3);
                 case 2: subject.addMark(4);
                 case 3: subject.addMark(5);

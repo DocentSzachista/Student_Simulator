@@ -1,7 +1,7 @@
 public abstract class EventBase
 {
     protected String description;
-    protected int requirements;
+    protected int requiredStatistic;
     protected StatisticType typeOfStatistic;
     public void  setDescription(String description)
     {
