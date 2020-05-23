@@ -19,7 +19,7 @@ public class AddEventAfterClassesBase
     private List<EventAfterClasses> listAfterSchool = new ArrayList<EventAfterClasses>();
     public AddEventAfterClassesBase()
     {
-        for(int i=0; i<10; i++)
+        for(int i=0; i<8; i++)
         {
             listAfterSchool.add(new EventAfterClasses(description[i], typeOfStatisticRequired[i], requiredStats[i]));
         }

@@ -58,7 +58,8 @@ public class Student
      * Wydrukowanie statystyk w konsoli
      * @return statystyki w postaci napisu
      */
-    public String printStats()
+    @Override
+    public String toString()
     {
         StringBuilder returnValue = new StringBuilder();
         for (Map.Entry<StatisticType, Integer> stat : statistics.entrySet())
