@@ -32,13 +32,16 @@ public class EventAfterClasses extends EventBase
         int boost= random.nextInt(3)+2;
         int days= random.nextInt(3)+1;
         StatisticChange zmiana;
+        System.out.println(description);
         if (student.getStatistic(typeOfStatistic)>requiredStatistic)
         {
              zmiana = new StatisticChange(typeOfStatistic, boost, days);
+             System.out.println("Udało się, Twoja/Twój " + typeOfStatistic + " zwiększyła się o " + boost + " pkt na " + days + " dni/dzień");
         }
         else
         {
              zmiana = new StatisticChange(typeOfStatistic, -boost, days);
+             System.out.println("Nie udało się, Twoja/Twój " + typeOfStatistic + " zmniejszyła się o " + boost + " pkt na " + days + " dni/dzień");
         }
         student.addStatisticChange(zmiana);
     }
