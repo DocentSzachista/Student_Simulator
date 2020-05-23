@@ -18,7 +18,7 @@ public class Subject
 	 * ilosc ocen z kursu
 	 */
 	private int marksAmount;
-	private  AddEventBaseDuringClasses Events= new AddEventBaseDuringClasses();
+	private  AddEventBaseDuringClasses events= new AddEventBaseDuringClasses();
 	/**
 	 * Tworzenie nowej instancji przedmiotu o zadanej nazwie
 	 *
@@ -73,9 +73,10 @@ public class Subject
 	public ScientificEvent randomEvent(Student student)
 	{
 		Random random= new Random();
-		List<ScientificEvent> lista = Events.getListAfterSchool();
-		ScientificEvent Event =  lista.get(random.nextInt(lista.size()-1));
-		 return  Event;
+		List<ScientificEvent> lista = events.getListAfterSchool();
+		ScientificEvent event =  lista.get(random.nextInt(lista.size()));
+		lista.remove(random.nextInt(lista.size()));
+		 return  event;
 
 
 	}

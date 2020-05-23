@@ -31,7 +31,7 @@ public class Simulation
         for (int i = 0; i < 5; i++)
             System.out.println(dayNames[i] + ": " + plan.get(i));
 
-        simulationLoop(15, janusz, plan);
+        simulationLoop(10, janusz, plan);
     }
     static void generateSubjects(List<Subject> list)
     {
