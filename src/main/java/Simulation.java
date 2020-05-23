@@ -13,7 +13,7 @@ public class Simulation
 {
     public static final String[] dayNames = {"Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek", "Weekend"};
     public static List<Subject> allSubjects = new LinkedList<Subject>();
-
+    private static AddEventAfterClassesBase weekendOrAfterClassesBase=new AddEventAfterClassesBase();
     public static void main(String[] args)
     {
         generateSubjects(allSubjects);
@@ -71,7 +71,7 @@ public class Simulation
                 if(day == 5)
                 {
                     System.out.println("Weekend! Brak zajęć");
-                    
+                    eventAfterClassesSimulationPhase(student);
                 }
                 else
                 {
@@ -85,6 +85,18 @@ public class Simulation
                 student.removeExpiredStatisticChanges();
             }
         }
+    }
+
+
+
+    static public  void eventAfterClassesSimulationPhase(Student student)
+    {
+        List<EventAfterClasses> events = weekendOrAfterClassesBase.getListAfterSchool();
+        Random randomize= new Random();
+        int index= randomize.nextInt(events.size());
+        EventAfterClasses event= events.get(index);
+        event.evaluateStudent(student);
+        events.remove(index);
     }
 }
 
