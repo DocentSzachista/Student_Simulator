@@ -21,7 +21,7 @@ public class Simulation
         IStudentStatGenerator generator = new StudentStatGenerator();
         Student janusz= new Student(generator);
         System.out.println("Statystyki studenta: ");
-        System.out.println(janusz.printStats());
+        System.out.println(janusz);
         //Stworzenie jego planu zajęć
         List<Subject> plan = new ArrayList<>();
         Random rand = new Random();
@@ -93,10 +93,11 @@ public class Simulation
     {
         List<EventAfterClasses> events = weekendOrAfterClassesBase.getListAfterSchool();
         Random randomize= new Random();
-        int index= randomize.nextInt(events.size());
-        EventAfterClasses event= events.get(index);
+        int index= randomize.nextInt(events.size() - 1) + 1;
+        EventAfterClasses event = events.get(index);
+        events.set(index, events.get(0));
+        events.set(0, event);
         event.evaluateStudent(student);
-        events.remove(index);
     }
 }
 
