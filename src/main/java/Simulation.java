@@ -75,6 +75,10 @@ public class Simulation
                 else
                 {
                     System.out.println("Dzisiejsze zajęcia to: " + plan.get(day));
+                    ScientificEvent Event= plan.get(day).randomEvent(student);
+                    Event.setSubject(plan.get(day));
+                    Event.evaluateStudent(student);
+                    System.out.println(plan.get(day).getScore());
                 }
                 student.removeExpiredStatisticChanges();
             }

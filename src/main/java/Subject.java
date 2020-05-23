@@ -18,7 +18,7 @@ public class Subject
 	 * ilosc ocen z kursu
 	 */
 	private int marksAmount;
-	private  AddEventBaseDuringClasses Events= new AddEventBaseDuringClasses("EventDuringClassesBase.txt");
+	private  AddEventBaseDuringClasses Events= new AddEventBaseDuringClasses();
 	/**
 	 * Tworzenie nowej instancji przedmiotu o zadanej nazwie
 	 *
@@ -70,12 +70,13 @@ public class Subject
 	public String toString () {
 		return name;
 	}
-	public void randomEvent(Student student)
+	public ScientificEvent randomEvent(Student student)
 	{
 		Random random= new Random();
 		List<ScientificEvent> lista = Events.getListAfterSchool();
-		int losujElement= random.nextInt(lista.size()-1);
-		 lista.get(losujElement).evaluateStudent(student);
+		ScientificEvent Event =  lista.get(random.nextInt(lista.size()-1));
+		 return  Event;
+
 
 	}
 
