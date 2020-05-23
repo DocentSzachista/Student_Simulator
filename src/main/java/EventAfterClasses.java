@@ -1,3 +1,5 @@
+import java.util.Random;
+
 /**Klasa EventAfterClasses sprawdza wydarzenie po zajęciach
  * Jeżeli student spełni wymagania to otrzyma tymczasowy boost do danej statystyki, w innym wypadku otrzyma ujemny.
  *
@@ -26,14 +28,17 @@ public class EventAfterClasses extends EventBase
     @Override
     public void evaluateStudent(Student student)
     {
+        Random random= new Random();
+        int boost= random.nextInt(3)+2;
+        int days= random.nextInt(3)+1;
         StatisticChange zmiana;
         if (student.getStatistic(typeOfStatistic)>requiredStatistic)
         {
-             zmiana = new StatisticChange(typeOfStatistic, 3, 2);
+             zmiana = new StatisticChange(typeOfStatistic, boost, days);
         }
         else
         {
-             zmiana = new StatisticChange(typeOfStatistic, -3, 2);
+             zmiana = new StatisticChange(typeOfStatistic, -boost, days);
         }
         student.addStatisticChange(zmiana);
     }
