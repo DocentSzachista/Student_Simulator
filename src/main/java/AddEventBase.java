@@ -8,9 +8,9 @@ public class AddEventBase
 {
     private File base;
     private List<EventAfterClasses> listAfterSchool = new ArrayList<EventAfterClasses>();
-    public AddEventBase(File event)
+    public AddEventBase(String event)
     {
-        this.base= event;
+        this.base= new File(event);
         try
         {
 
