@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Random;
-import java.util.Scanner;
 
 /**
  * @author Damian Raczkowski
@@ -12,22 +12,18 @@ import java.util.Scanner;
 public class Simulation
 {
     public static final String[] dayNames = {"Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek", "Weekend"};
-    public static LinkedList<Subject> allSubjects = new LinkedList<Subject>();
+    public static List<Subject> allSubjects = new LinkedList<Subject>();
 
     public static void main(String[] args)
     {
-        addToList(allSubjects);
-        //Skaner do zatrzymywania symulacji
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Nacisnij Enter, żeby stworzyć studenta...");
-        scanner.nextLine();
+        generateSubjects(allSubjects);
         //Stworzenie studenta
-        IStudentStatGenerator generator = new StudentGenerator();
+        IStudentStatGenerator generator = new StudentStatGenerator();
         Student janusz= new Student(generator);
         System.out.println("Statystyki studenta: ");
         System.out.println(janusz.printStats());
         //Stworzenie jego planu zajęć
-        ArrayList<Subject> plan = new ArrayList<>();
+        List<Subject> plan = new ArrayList<>();
         Random rand = new Random();
         generatePlan(plan, rand, allSubjects);
         //Wydruk planu
@@ -35,29 +31,9 @@ public class Simulation
         for (int i = 0; i < 5; i++)
             System.out.println(dayNames[i] + ": " + plan.get(i));
 
-        System.out.println("\nNacisnij Enter, żeby rozpocząć symulację...");
-        scanner.nextLine();
-
-        for (int week = 1; week <= 15; week++)
-        {
-            for(int day = 0; day < 6; day++)
-            {
-                System.out.println("Dziś jest " + dayNames[day] + " tydzień " + week);
-                if(day == 5)
-                {
-                    System.out.println("Weekend! Brak zajęć");
-                }
-                else
-                {
-                    System.out.println("Dzisiejsze zajęcia to: " + plan.get(day));
-                }
-                janusz.removeExpiredStatisticChanges();
-                System.out.println("Nacisnij Enter, żeby przejść do następnego dnia...");
-                scanner.nextLine();
-            }
-        }
+        simulationLoop(15, janusz, plan);
     }
-    public static void addToList(LinkedList<Subject> list)
+    static void generateSubjects(List<Subject> list)
     {
         //Dodanie przedmiotów do listy z której będą losowane
         list.add(new Subject("Matematyka"));
@@ -66,7 +42,7 @@ public class Simulation
         list.add(new Subject("Miernictwo"));
         list.add(new Subject("Fizyka"));
     }
-    public static void generatePlan(ArrayList<Subject> plan, Random rand, LinkedList<Subject> subjectList)
+    static void generatePlan(List<Subject> plan, Random rand, List<Subject> subjectList)
     {
         for (int i = 0; i < 5; i++)
         {
@@ -79,8 +55,28 @@ public class Simulation
             }
             else
             {
-                plan.add(subjectList.getFirst());
-                subjectList.removeFirst();
+                plan.add(subjectList.get(0));
+                subjectList.remove(0);
+            }
+        }
+    }
+
+    static void simulationLoop(int weeks, Student student, List<Subject> plan)
+    {
+        for (int week = 1; week <= weeks; week++)
+        {
+            for(int day = 0; day < 6; day++)
+            {
+                System.out.println("Dziś jest " + dayNames[day] + " tydzień " + week);
+                if(day == 5)
+                {
+                    System.out.println("Weekend! Brak zajęć");
+                }
+                else
+                {
+                    System.out.println("Dzisiejsze zajęcia to: " + plan.get(day));
+                }
+                student.removeExpiredStatisticChanges();
             }
         }
     }

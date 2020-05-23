@@ -2,7 +2,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
-public class StudentGenerator implements IStudentStatGenerator
+public class StudentStatGenerator implements IStudentStatGenerator
 {
 	@Override
 	public Map<StatisticType, Integer> generateStats ()
