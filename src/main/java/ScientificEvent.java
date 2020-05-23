@@ -7,20 +7,22 @@ public class ScientificEvent extends EventBase{
   }
 
     @Override
-    public void evaluateStudent(Student student) {
-        if( student.getStatistic(typeOfStatistic)>requiredStatistic)
+    public void evaluateStudent(Student student)
+    {
+        int statDifference = student.getStatistic(typeOfStatistic) - requiredStatistic;
+        if(statDifference >= 0)
         {
-            switch(student.getStatistic(typeOfStatistic)-requiredStatistic){
-                case 1: subject.addMark(3);
-                case 2: subject.addMark(4);
-                case 3: subject.addMark(5);
-            }
+            if(statDifference >= requiredStatistic)
+                subject.addMark(5);
+            else if((float)statDifference >= (float)requiredStatistic * .5f)
+                subject.addMark(4);
+            else
+                subject.addMark(3);
         }
         else
         {
             subject.addMark(2);
         }
-
     }
 
     public void setSubject(Subject subject) {
