@@ -4,9 +4,15 @@ import java.util.List;
 import java.util.Random;
 
 /**
+ * Student Simulation
+ * <p>Program mający za zadanie utworzyć studenta i poddać go próbie przetrwania pierwszego semestru
+ * na uczelni. Semestr składa się z 10 tygodni</p>
  * @author Damian Raczkowski
  * @author Jan Malek
- * klasa Simulation odpowiada za stworzenie Studenta, wygenerowanie planu zajęć oraz przeprowadzenie całej symulacji semestru.
+ * @version 1.0
+ * @since  23-05-2020
+ * klasa Simulation odpowiada za stworzenie Studenta, wygenerowanie planu zajęć, wylosowanie wydarzenia
+ * po zajęciach oraz przeprowadzenie całej symulacji semestru.
  *
  */
 public class Simulation
@@ -14,6 +20,11 @@ public class Simulation
     public static final String[] dayNames = {"Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek", "Weekend"};
     public static List<Subject> allSubjects = new LinkedList<Subject>();
     private static AddEventAfterClassesBase weekendOrAfterClassesBase=new AddEventAfterClassesBase();
+
+    /**
+     * Silnik symulacji
+     * @param args
+     */
     public static void main(String[] args)
     {
         generateSubjects(allSubjects);
@@ -33,6 +44,11 @@ public class Simulation
 
         simulationLoop(10, janusz, plan);
     }
+
+    /**
+     * Dodanie przedmiotow
+     * @param list w ktorej są przetrzymywane nazwy przedmiotow
+     */
     static void generateSubjects(List<Subject> list)
     {
         //Dodanie przedmiotów do listy z której będą losowane
@@ -42,6 +58,13 @@ public class Simulation
         list.add(new Subject("Miernictwo"));
         list.add(new Subject("Fizyka"));
     }
+
+    /**
+     * Wygenerowanie planu zajec
+     * @param plan nazwy przedmiotow uporzadkowane w dniach tygodnia
+     * @param rand ziarno losowania
+     * @param subjectList nazwy przedmiotow
+     */
     static void generatePlan(List<Subject> plan, Random rand, List<Subject> subjectList)
     {
         for (int i = 0; i < 5; i++)
@@ -61,6 +84,12 @@ public class Simulation
         }
     }
 
+    /**
+     * Pętla symulacji
+     * @param weeks ilosc tygodni trwania semestru
+     * @param student obiekt studenta, na którym przeprowadzana jest symulacja
+     * @param plan zajecia przyporzadkowane dniom tygodnia
+     */
     static void simulationLoop(int weeks, Student student, List<Subject> plan)
     {
         for (int week = 1; week <= weeks; week++)
@@ -87,7 +116,10 @@ public class Simulation
     }
 
 
-
+    /**
+     * Wylosowanie wydarzenia po zajeciach i sprawdzenie czy przebieglo ono dla studenta pomyslnie
+     * @param student od ktorego będzie pobierana statystyka
+     */
     static public  void eventAfterClassesSimulationPhase(Student student)
     {
         List<EventAfterClasses> events = weekendOrAfterClassesBase.getListAfterSchool();

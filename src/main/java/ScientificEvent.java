@@ -1,11 +1,28 @@
+/**
+ * Klasa ScientificEvent reprezentuje wydarzenie podczas zajec z okreslonego kursu.
+ * Sprawdza wybrany typ statystyki, jezeli bedzie spelniala wymog to dodaje ocene pozytywna,
+ * a jesli nie to dodaje ocene negatywna do przedmiotu.
+ */
+
 public class ScientificEvent extends EventBase{
     private Subject subject;
+
+    /**
+     * Stworzenie instancji ScientificEvent
+     * @param description opis wydarzenia
+     * @param typeOfStatistic typ sprawdzanej statystyki
+     * @param requirements wymagana wartosc statystyki
+     */
   public ScientificEvent(String description, StatisticType typeOfStatistic, int requirements ){
       this.description=description;
       this.typeOfStatistic=typeOfStatistic;
       this.requiredStatistic=requirements;
   }
 
+    /**
+     * Metoda sprawdza czy student spełnia wymogi wydarzenia
+     * @param student na którym ma zostać dokonane sprawdzenie.
+     */
     @Override
     public void evaluateStudent(Student student)
     {
@@ -29,6 +46,10 @@ public class ScientificEvent extends EventBase{
         }
     }
 
+    /**
+     * Przyporzadkowanie wydarzenia przedmiotowi
+     * @param subject przedmiot.
+     */
     public void setSubject(Subject subject) {
         this.subject = subject;
     }

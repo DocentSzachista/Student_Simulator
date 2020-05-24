@@ -1,5 +1,5 @@
 /**
- * enum przechowywujący informacje o typach statystyk
+ * enum przechowywujacy informacje o typach statystyk
  */
 public enum StatisticType
 {

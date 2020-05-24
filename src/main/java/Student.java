@@ -2,9 +2,10 @@ import java.util.LinkedList;
 import java.util.Map;
 
 /**
- * klasa Student reprezentująca studenta
- * Student może uczestniczyć w różnych kursach
- * Student posiada statystki, na podstawie których sprawdzana jest wiedza podczas wydarzeń z przedmiotów oraz jego zachowania poza uczelnią.
+ * klasa Student reprezentujaca studenta
+ * Student moze uczestniczyc w roznych kursach
+ * Student posiada statystki, na podstawie ktorych sprawdzana jest wiedza podczas wydarzen z
+ * przedmiotow oraz jego zachowania poza uczelnią.
  *
  */
 public class Student
@@ -19,15 +20,16 @@ public class Student
     private LinkedList<StatisticChange> statisticChanges = new LinkedList<>();
 
     /**
-     * Tworzy nowego Studenta, wraz z losowo wygenerowanymi statystykami.
-     *
+     * Tworzy instancje studenta, wraz z losowo wygenerowanymi statystykami.
+     * @param generator generator statystyk
      */
     public Student(IStudentStatGenerator generator)
     {
         statistics = generator.generateStats();
     }
     /**
-     * Zwraca jedną z zadanych statystyk studenta.
+     * Zwraca jedna z zadanych statystyk studenta.
+     * @param statisticType typ zadanej statystyki
      * @return typ statystyki studenta
      */
     public int getStatistic(StatisticType statisticType)
@@ -39,7 +41,7 @@ public class Student
         return returnAmount;
     }
     /**
-     * Metoda usuwająca tymczasowy boost do statystyk
+     * Metoda usuwajaca tymczasowy boost do statystyk
      */
     public void removeExpiredStatisticChanges()
     {

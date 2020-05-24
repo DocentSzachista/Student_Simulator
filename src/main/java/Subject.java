@@ -1,9 +1,11 @@
+import java.util.Random;
+import java.util.List;
+
 /**
- * Klasa Subject, przechowywująca informacje o przedmiocie oraz liczbę ocen Studenta
- *
+ * Klasa Subject, przechowywujaca informacje o przedmiocie oraz liczbe ocen Studenta.
+ * Sprawdza dla wylosowanego wydarzenia statystykę Studenta i po rozpatrzeniu dodaje
+ * mu ocene.
  */
- import java.util.Random;
- import java.util.List;
 public class Subject
 {
 	/**
@@ -21,7 +23,7 @@ public class Subject
 	private  AddEventBaseDuringClasses events= new AddEventBaseDuringClasses();
 	/**
 	 * Tworzenie nowej instancji przedmiotu o zadanej nazwie
-	 *
+	 * @param name nazwa przedmiotu
 	 */
 	public Subject(String name)
 	{
@@ -30,7 +32,7 @@ public class Subject
 
 	/**
 	 * Dodanie nowej oceny
-	 * @param mark ocena jaką student uzyskał
+	 * @param mark ocena jaka student uzyskal
 	 */
 	public void addMark(float mark)
 	{
@@ -42,8 +44,8 @@ public class Subject
 	}
 
 	/**
-	 * Uzyskanie informacji o średniej ocen z kursu
-	 * @return zwraca średnią jeśli student uzyskał jakąkolwiek ocenę
+	 * Uzyskanie informacji o sredniej ocen z kursu
+	 * @return zwraca srednia jesli student uzyskal jakakolwiek ocenę
 	 */
 	public float getScore()
 	{
@@ -54,8 +56,8 @@ public class Subject
 	}
 
 	/**
-	 * Zwraca informację czy student zdał przedmiot
-	 * @return jeżeli student uzyskał średnią równą lub większą od 3.0 to zwraca informację, że zdał.
+	 * Zwraca informacje czy student zdal przedmiot
+	 * @return jezeli student uzyskal średnią równą lub większą od 3.0 to zwraca informację, ze zdal.
 	 */
 	public boolean isSubjectPassed()
 	{
@@ -63,7 +65,7 @@ public class Subject
 	}
 
 	/**
-	 * Zwraca nazwę przedmiotu
+	 * Zwraca nazwe przedmiotu
 	 * @return nazwa tego przedmiotu
 	 */
 	@Override

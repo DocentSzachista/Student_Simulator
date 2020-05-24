@@ -2,6 +2,9 @@
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Klasa AddEvenBaseDuringClasses tworząca listę obiektów Scientific Event
+ */
 
 public class AddEventBaseDuringClasses
 {
@@ -12,8 +15,8 @@ public class AddEventBaseDuringClasses
             "Na kolokwium pojawiły się te same pytania co w poprzednim roku",
             "Prowadzący wita Cię naprawdę trudną wejściówką. Próbujesz ściągnąć by ją zdać",
             "Prowadzący ma rozkminę na temat obecnej sytuacji gospodarczej na świecie. Studen udziela się w dyskusji, licząc na fory u prowadzącego.",
-            "Studen przychodzi na zaliczenie przedmiotu będąc nieprzygoowanym. Próbuje przypomnieć sobie materiał z wykładów w trakcie pisania.",
-            "Student pisze egzamin",
+            "Student przychodzi na zaliczenie przedmiotu będąc nieprzygoowanym. Próbuje przypomnieć sobie materiał z wykładów w trakcie pisania.",
+            "Student pisze egzamin.",
             "Student obraża prowadzącego witając go używając stopnia naukowego niższego od posiadanego."};
 
 
@@ -22,6 +25,10 @@ public class AddEventBaseDuringClasses
     private int[] requiredStats = {3, 4, 1, 4, 5, 4, 6, 8, 6, 10 };
 
     private List<ScientificEvent> listAfterSchool = new ArrayList<ScientificEvent>();
+
+    /**
+     * Tworzenie instancji AddEventBaseDuringClasses
+     */
     public AddEventBaseDuringClasses()
     {
         for(int i=0; i<10; i++)
@@ -30,6 +37,10 @@ public class AddEventBaseDuringClasses
         }
     }
 
+    /**
+     * Metoda zwracająca listę obiektów
+     * @return
+     */
     public List<ScientificEvent> getListAfterSchool() {
         return listAfterSchool;
     }

@@ -2,6 +2,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
+/**
+ * Klasa ma za zadanie wygenerować statystyki Studenta
+ */
 public class StudentStatGenerator implements IStudentStatGenerator
 {
 	@Override
