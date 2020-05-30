@@ -3,6 +3,7 @@ package simulation.subject;
 import simulation.event.Event;
 
 import java.util.List;
+import java.util.Random;
 
 /**
  * Klasa simulation.subject.Subject, przechowywujaca informacje o przedmiocie oraz liczbe ocen Studenta.
@@ -13,10 +14,13 @@ public class Subject {
 
     private final String name;
     private final List<Event> possibleEvents;
+    private final Random rand;
 
     public Subject(String name, List<Event> possibleEvents) {
         this.name = name;
         this.possibleEvents = possibleEvents;
+
+        rand = new Random();
     }
 
     /**
@@ -42,8 +46,12 @@ public class Subject {
     }
 
     public Event randomEvent() {
-        // implement
-        return null;
+        int index = rand.nextInt(possibleEvents.size() - 1) + 1;
+        Event returnEvent = possibleEvents.get(index);
+        possibleEvents.set(index, possibleEvents.get(0));
+        possibleEvents.set(0, returnEvent);
+
+        return returnEvent;
     }
 
 }

@@ -31,7 +31,13 @@ public class Notes {
     }
 
     private float calculateAverage(List<Float> notes) {
-        // do actual calculations here
-        return 3f;
+        float sum = 0f;
+        int amount = 0;
+        for (Float note : notes)
+        {
+            sum += note;
+            amount++;
+        }
+        return Math.round(sum / amount * 100f) / 100f;
     }
 }

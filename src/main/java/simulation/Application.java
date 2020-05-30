@@ -1,9 +1,11 @@
 package simulation;
 
+import simulation.event.EventsDatabase;
 import simulation.plan.Day;
 import simulation.plan.Plan;
 import simulation.plan.RandomPlanGenerator;
 import simulation.student.Student;
+import simulation.student.StudentStatGenerator;
 import simulation.subject.Subject;
 
 import java.util.ArrayList;
@@ -30,19 +32,19 @@ public class Application
     {
         List<Subject> availableSubjects = new ArrayList<>();
 
-        availableSubjects.add(new Subject("Matematyka", emptyList()));
-        availableSubjects.add(new Subject("Filozofia", emptyList()));
-        availableSubjects.add(new Subject("Programowanie", emptyList()));
-        availableSubjects.add(new Subject("Miernictwo", emptyList()));
-        availableSubjects.add(new Subject("Fizyka", emptyList()));
+        EventsDatabase database = new EventsDatabase();
+
+        availableSubjects.add(new Subject("Matematyka", database.getSchoolEvents()));
+        availableSubjects.add(new Subject("Filozofia", database.getSchoolEvents()));
+        availableSubjects.add(new Subject("Programowanie", database.getSchoolEvents()));
+        availableSubjects.add(new Subject("Miernictwo", database.getSchoolEvents()));
+        availableSubjects.add(new Subject("Fizyka", database.getSchoolEvents()));
 
         RandomPlanGenerator randomPlanGenerator = new RandomPlanGenerator(availableSubjects);
-        Simulation simulation = new Simulation(emptyList(), new Student(null, randomPlanGenerator.generate()));
+        StudentStatGenerator statGenerator = new StudentStatGenerator();
+        Simulation simulation = new Simulation(emptyList(), new Student(statGenerator.generate(), randomPlanGenerator.generate()));
 
-        List<Day> daysToSimulate = Arrays.asList(
-                Day.FRIDAY, Day.SUNDAY, Day.WEDNESDAY
-        );
-        //simulation.run(daysToSimulate.iterator());
+        simulation.run(10);
     }
 }
 

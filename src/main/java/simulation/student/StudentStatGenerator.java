@@ -7,9 +7,10 @@ import java.util.Random;
 /**
  * Klasa ma za zadanie wygenerować statystyki Studenta
  */
-public class StudentStatGenerator implements IStudentStatGenerator {
-	@Override
-	public Map<StatisticType, Integer> generate() {
+public class StudentStatGenerator
+{
+	public Map<StatisticType, Integer> generate()
+	{
 		Random rnd = new Random();
 		HashMap<StatisticType, Integer> returnValue = new HashMap<>();
 		for (StatisticType stat : StatisticType.values())

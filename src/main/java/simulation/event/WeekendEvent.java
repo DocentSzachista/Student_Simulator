@@ -3,6 +3,7 @@ package simulation.event;
 import simulation.student.StatisticChange;
 import simulation.student.StatisticType;
 import simulation.student.Student;
+import simulation.subject.Subject;
 
 import java.util.Random;
 
@@ -11,7 +12,7 @@ import java.util.Random;
  * Jeżeli simulation.student spełni wymagania to otrzyma tymczasowy boost do danej statystyki, w innym wypadku otrzyma ujemny.
  */
 
-public class EventAfterClasses implements Event {
+public class WeekendEvent implements Event {
     String description;
     StatisticType typeOfStatistic;
     int requiredStatistic;
@@ -21,7 +22,7 @@ public class EventAfterClasses implements Event {
      * @param typeOfStatistic typ statystyki jaką wydarzenie sprawdza
      * @param requiredStatistic wymagana ilość statystyki
      */
-    public EventAfterClasses(String description, StatisticType typeOfStatistic, int requiredStatistic) {
+    public WeekendEvent (String description, StatisticType typeOfStatistic, int requiredStatistic) {
         this.description=description;
         this.typeOfStatistic=typeOfStatistic;
         this.requiredStatistic=requiredStatistic;
@@ -33,19 +34,22 @@ public class EventAfterClasses implements Event {
      * Stworzenie nowego bonusu do statystyk
      */
     @Override
-    public void apply(Student student) {
+    public void apply(Student student, Subject subject) {
         Random random= new Random();
         int boost= random.nextInt(3)+2;
         int days= random.nextInt(3)+1;
-        StatisticChange zmiana;
+        StatisticChange change;
         System.out.println(description);
-        if (student.getStatistic(typeOfStatistic)>requiredStatistic) {
-            zmiana = new StatisticChange(typeOfStatistic, boost, days);
+        if (student.getStatistic(typeOfStatistic)>requiredStatistic)
+        {
+            change = new StatisticChange(typeOfStatistic, boost, days);
             System.out.println("Udało się, Twoja/Twój " + typeOfStatistic + " zwiększyła się o " + boost + " pkt na " + days + " dni/dzień");
-        } else {
-            zmiana = new StatisticChange(typeOfStatistic, -boost, days);
+        }
+        else
+        {
+            change = new StatisticChange(typeOfStatistic, -boost, days);
             System.out.println("Nie udało się, Twoja/Twój " + typeOfStatistic + " zmniejszyła się o " + boost + " pkt na " + days + " dni/dzień");
         }
-        student.addStatisticChange(zmiana);
+        student.addStatisticChange(change);
     }
 }

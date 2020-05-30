@@ -18,4 +18,5 @@ public class Plan {
     {
         return subjectsByDay.getOrDefault(day, new ArrayList<>());
     }
+
 }
