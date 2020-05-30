@@ -115,7 +115,7 @@ public class Simulation
 
     /**
      * Metoda do losowania wydarzenia, które ma być przeprowadzone w weekend
-     * @return
+     * @return Wylosowane wydarzenie
      */
     private Event getRandomWeekendEvent()
     {
