@@ -5,6 +5,9 @@ import simulation.student.StatisticType;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Klasa dodająca bazy wydarzeń WeekendEvents i SchoolEvents.
+ */
 public class EventsDatabase
 {
 	private final List<Event> weekendEvents;
@@ -20,6 +23,9 @@ public class EventsDatabase
 		return schoolEvents;
 	}
 
+	/**
+	 * Konstruktor klasy
+	 */
 	public EventsDatabase()
 	{
 		weekendEvents = Arrays.asList(

@@ -31,6 +31,7 @@ public class SchoolEvent implements Event {
     /**
      * Metoda sprawdza czy simulation.student spełnia wymogi wydarzenia
      * @param student na którym ma zostać dokonane sprawdzenie.
+     * @param przedmiot na którym teraz student przebywa.
      */
     @Override
     public void apply(Student student, Subject subject)
