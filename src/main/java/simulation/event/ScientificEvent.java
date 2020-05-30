@@ -1,35 +1,40 @@
+package simulation.event;
+
+import simulation.student.StatisticType;
+import simulation.student.Student;
+import simulation.subject.Subject;
+
 /**
- * Klasa ScientificEvent reprezentuje wydarzenie podczas zajec z okreslonego kursu.
+ * Klasa simulation.event.ScientificEvent reprezentuje wydarzenie podczas zajec z okreslonego kursu.
  * Sprawdza wybrany typ statystyki, jezeli bedzie spelniala wymog to dodaje ocene pozytywna,
  * a jesli nie to dodaje ocene negatywna do przedmiotu.
  */
 
-public class ScientificEvent extends EventBase{
+public class ScientificEvent extends EventBase {
     private Subject subject;
 
     /**
-     * Stworzenie instancji ScientificEvent
-     * @param description opis wydarzenia
+     * Stworzenie instancji simulation.event.ScientificEvent
+     *
+     * @param description     opis wydarzenia
      * @param typeOfStatistic typ sprawdzanej statystyki
-     * @param requirements wymagana wartosc statystyki
+     * @param requirements    wymagana wartosc statystyki
      */
-  public ScientificEvent(String description, StatisticType typeOfStatistic, int requirements ){
-      this.description=description;
-      this.typeOfStatistic=typeOfStatistic;
-      this.requiredStatistic=requirements;
-  }
+    public ScientificEvent(String description, StatisticType typeOfStatistic, int requirements ){
+        this.description=description;
+        this.typeOfStatistic=typeOfStatistic;
+        this.requiredStatistic=requirements;
+    }
 
     /**
-     * Metoda sprawdza czy student spełnia wymogi wydarzenia
+     * Metoda sprawdza czy simulation.student spełnia wymogi wydarzenia
      * @param student na którym ma zostać dokonane sprawdzenie.
      */
     @Override
-    public void evaluateStudent(Student student)
-    {
+    public void evaluateStudent(Student student) {
         System.out.println(description);
         int statDifference = student.getStatistic(typeOfStatistic) - requiredStatistic;
-        if(statDifference >= 0)
-        {
+        if(statDifference >= 0) {
             int markToAdd = 3;
             if(statDifference >= requiredStatistic)
                 markToAdd = 5;
@@ -38,9 +43,7 @@ public class ScientificEvent extends EventBase{
 
             subject.addMark(markToAdd);
             System.out.println("Udało się, otrzymałeś ocene: " + markToAdd);
-        }
-        else
-        {
+        } else {
             subject.addMark(2);
             System.out.println("Nie udało się, otrzymałeś ocene: 2");
         }
