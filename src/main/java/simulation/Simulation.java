@@ -10,11 +10,20 @@ import simulation.subject.Subject;
 import java.util.List;
 import java.util.Random;
 
-public class Simulation {
+/**
+ * Klasa Simulation odpowiada za przeprowadzenie symulacji (wybranie odpowiednich wydarzeń do dni, oraz sprawdzenie czy symulacja została zakończona sukcesem)
+ */
+public class Simulation
+{
     private final List<Event> weekendEvents;
     private final Student student;
     private final Random rand;
 
+    /**
+    * Konstruktor klasy
+    * @param weekendEvents Lista zawierająca wszystkie możliwe wydarzenia jakie mogą odbyć się w weekend
+    * @param student Student, dla którego symulacja będzie przeprowadzana
+    */
     public Simulation(List<Event> weekendEvents, Student student)
     {
         this.weekendEvents = weekendEvents;
@@ -23,6 +32,10 @@ public class Simulation {
         rand = new Random();
     }
 
+    /**
+     * Metoda która przeprowadza symulację
+     * @param weeks Ilość tygodni sumulacji
+     */
     public void run(int weeks)
     {
         System.out.println("Statystyki studenta to:\n" + student);
@@ -36,6 +49,9 @@ public class Simulation {
         semesterSummary();
     }
 
+    /**
+     * Metoda sprawdzająca, czy symulacja zakończyła się powodzeniem, oraz wyświetlająca końcowe wyniki studenta
+     */
     private void semesterSummary()
     {
         Notes notes = student.getNotes();
@@ -61,7 +77,13 @@ public class Simulation {
         }
     }
 
-    private void applyEventsAccordingToDay(Day currentDay, int week) {
+    /**
+     * Metoda, która przeporwadza wydarzenie dla każdego dnia
+     * @param currentDay Dla jakiego dnia ma być przeprowadzone wydarzenie
+     * @param week Numer tygodnia w którym ten dzień się znajduje
+     */
+    private void applyEventsAccordingToDay(Day currentDay, int week)
+    {
         System.out.println("Dziś jest " + currentDay.name() + " tydzień " + week);
 
         if (currentDay == Day.SATURDAY || currentDay == Day.SUNDAY) {
@@ -77,6 +99,10 @@ public class Simulation {
         System.out.println();
     }
 
+    /**
+     * Metoda do przeprowadzania wydarzenia dla przedmiotu
+     * @param currentDaySubjects Lista przedmiotów, dla których mają zostać przeprowadzone wydarzenia
+     */
     private void applyEverySubjectEvents(List<Subject> currentDaySubjects) {
         for (Subject subject : currentDaySubjects) {
             Notes notes = student.getNotes();
@@ -87,6 +113,10 @@ public class Simulation {
         }
     }
 
+    /**
+     * Metoda do losowania wydarzenia, które ma być przeprowadzone w weekend
+     * @return
+     */
     private Event getRandomWeekendEvent()
     {
         int index = rand.nextInt(weekendEvents.size() - 1) + 1;

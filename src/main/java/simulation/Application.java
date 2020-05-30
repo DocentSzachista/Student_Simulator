@@ -15,19 +15,20 @@ import java.util.List;
 import static java.util.Collections.emptyList;
 
 /**
- * simulation.student.Student simulation.Simulation
  * <p>Program mający za zadanie utworzyć studenta i poddać go próbie przetrwania pierwszego semestru
- * na uczelni. Semestr składa się z 10 tygodni</p>
+ * na uczelni.</p>
  *
  * @author Damian Raczkowski
  * @author Jan Malek
- * @version 1.0
- * @since 23-05-2020
- * klasa simulation.Simulation odpowiada za stworzenie Studenta, wygenerowanie planu zajęć, wylosowanie wydarzenia
- * po zajęciach oraz przeprowadzenie całej symulacji semestru.
+ * @version 2.0
+ * @since 30-05-2020
+ * Klasa Application odpowiada za wygenerowanie studenta, planu, oraz wydarzeń dla przedmiotów oraz weekendów
  */
 public class Application
 {
+    /**
+    * Główna metoda programu
+    */
     public static void main(String[] args)
     {
         List<Subject> availableSubjects = new ArrayList<>();
