@@ -45,11 +45,12 @@ public class SchoolEvent implements Event {
             else if((float)statDifference >= (float)requiredStatistic * .5f)
                 markToAdd = 4f;
 
-            System.out.println("Udało się, otrzymałeś ocene: " + markToAdd);
+            System.out.print("Udało się, ");
         }
         else
-            System.out.println("Nie udało się, otrzymałeś ocene: 2");
+            System.out.print("Nie udało się, ");
 
+        System.out.println("otrzymałeś ocenę " + markToAdd);
         student.getNotes().add(subject, markToAdd);
     }
 }
