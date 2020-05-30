@@ -29,9 +29,9 @@ public class WeekendEvent implements Event {
     }
 
     /**
-     *
+     * Metoda tworząca nowy bonus do statystyk
      * @param student pobieranie informacji o statystyce studenta i porównywanie jej z ze statystyką wydarzenia
-     * Stworzenie nowego bonusu do statystyk
+     *
      */
     @Override
     public void apply(Student student, Subject subject) {

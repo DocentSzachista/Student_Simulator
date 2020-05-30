@@ -21,6 +21,11 @@ public class Student {
 
     private final Notes notes = new Notes();
 
+    /**
+     * Konstruktor klasy
+     * @param statistics mapa statystyk Studenta
+     * @param plan zajęć studenta
+     */
     public Student(Map<StatisticType, Integer> statistics, Plan plan)
     {
         this.statistics = statistics;
@@ -51,7 +56,6 @@ public class Student {
 
     /**
      * Dodaje bonus do statystyki
-     *
      * @param statisticChange zmiana statystyki
      */
     public void addStatisticChange(StatisticChange statisticChange)
@@ -59,11 +63,19 @@ public class Student {
         statisticChanges.add(statisticChange);
     }
 
+    /**
+     * Zwróć oceny
+     * @return lista ocen
+     */
     public Notes getNotes()
     {
         return notes;
     }
 
+    /**
+     * Zwróc plan zajęć
+     * @return plan zajęć
+     */
     public Plan getPlan()
     {
         return plan;
