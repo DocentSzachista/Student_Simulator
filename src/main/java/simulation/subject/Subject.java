@@ -6,9 +6,7 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * Klasa simulation.subject.Subject, przechowywujaca informacje o przedmiocie oraz liczbe ocen Studenta.
- * Sprawdza dla wylosowanego wydarzenia statystykę Studenta i po rozpatrzeniu dodaje
- * mu ocene.
+ * Klasa przechowywująca informacje o przedmiocie - jego nazwę oraz listę wydarzeń, jakie mogą się na nim zdarzyć
  */
 public class Subject {
 
@@ -16,6 +14,11 @@ public class Subject {
     private final List<Event> possibleEvents;
     private final Random rand;
 
+    /**
+     * Konstruktor klasy
+     * @param name Nazwa przedmiotu
+     * @param possibleEvents Lista wydarzeń jakie mogą się na nim zdarzyć
+     */
     public Subject(String name, List<Event> possibleEvents) {
         this.name = name;
         this.possibleEvents = possibleEvents;
@@ -24,27 +27,18 @@ public class Subject {
     }
 
     /**
-     * Uzyskanie informacji o sredniej ocen z kursu
-     *
-     * @return zwraca srednia jesli simulation.student uzyskal jakakolwiek ocenę
-     */
-
-    /**
-     * Zwraca informacje czy simulation.student zdal przedmiot
-     *
-     * @return jezeli simulation.student uzyskal średnią równą lub większą od 3.0 to zwraca informację, ze zdal.
-     */
-
-    /**
-     * Zwraca nazwe przedmiotu
-     *
-     * @return nazwa tego przedmiotu
+     * Metoda zwracająca nazwę przedmiotu
+     * @return Nazwa przedmiotu
      */
     @Override
     public String toString() {
         return name;
     }
 
+    /**
+     * Metoda losująca wydarzenie, które ma się zdarzyć na tym przedmiocie
+     * @return Wylosowane wydarzenie
+     */
     public Event randomEvent() {
         int index = rand.nextInt(possibleEvents.size() - 1) + 1;
         Event returnEvent = possibleEvents.get(index);
