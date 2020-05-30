@@ -1,6 +1,5 @@
 package simulation.student;
 
-
 import simulation.subject.Subject;
 
 import java.util.ArrayList;

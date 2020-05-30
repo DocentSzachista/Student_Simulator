@@ -10,9 +10,11 @@ import simulation.subject.Subject;
  * a jesli nie to dodaje ocene negatywna do przedmiotu.
  */
 
-public class ScientificEvent extends EventBase {
-    private Subject subject;
+public class ScientificEvent implements Event {
 
+    String description;
+    StatisticType typeOfStatistic;
+    int requiredStatistic;
     /**
      * Stworzenie instancji simulation.event.ScientificEvent
      *
@@ -31,7 +33,8 @@ public class ScientificEvent extends EventBase {
      * @param student na którym ma zostać dokonane sprawdzenie.
      */
     @Override
-    public void evaluateStudent(Student student) {
+    public void apply(Student student)
+    {
         System.out.println(description);
         int statDifference = student.getStatistic(typeOfStatistic) - requiredStatistic;
         if(statDifference >= 0) {
@@ -41,19 +44,11 @@ public class ScientificEvent extends EventBase {
             else if((float)statDifference >= (float)requiredStatistic * .5f)
                 markToAdd = 4;
 
-            subject.addMark(markToAdd);
             System.out.println("Udało się, otrzymałeś ocene: " + markToAdd);
-        } else {
-            subject.addMark(2);
+        }
+        else
+        {
             System.out.println("Nie udało się, otrzymałeś ocene: 2");
         }
-    }
-
-    /**
-     * Przyporzadkowanie wydarzenia przedmiotowi
-     * @param subject przedmiot.
-     */
-    public void setSubject(Subject subject) {
-        this.subject = subject;
     }
 }

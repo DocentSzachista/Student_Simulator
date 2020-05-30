@@ -21,7 +21,8 @@ public class Student {
 
     private final Notes notes = new Notes();
 
-    public Student(Map<StatisticType, Integer> statistics, Plan plan) {
+    public Student(Map<StatisticType, Integer> statistics, Plan plan)
+    {
         this.statistics = statistics;
         this.plan = plan;
     }
@@ -31,7 +32,8 @@ public class Student {
      * @param statisticType typ zadanej statystyki
      * @return typ statystyki studenta
      */
-    public int getStatistic(StatisticType statisticType) {
+    public int getStatistic(StatisticType statisticType)
+    {
         int returnAmount = statistics.getOrDefault(statisticType, 0);
         for (StatisticChange change : statisticChanges)
             returnAmount += change.getStatisticChange(statisticType);
@@ -42,7 +44,8 @@ public class Student {
     /**
      * Metoda usuwajaca tymczasowy boost do statystyk
      */
-    public void removeExpiredStatisticChanges() {
+    public void removeExpiredStatisticChanges()
+    {
         statisticChanges.removeIf(StatisticChange::shouldRemove);
     }
 
@@ -51,15 +54,18 @@ public class Student {
      *
      * @param statisticChange zmiana statystyki
      */
-    public void addStatisticChange(StatisticChange statisticChange) {
+    public void addStatisticChange(StatisticChange statisticChange)
+    {
         statisticChanges.add(statisticChange);
     }
 
-    public Notes getNotes() {
+    public Notes getNotes()
+    {
         return notes;
     }
 
-    public Plan getPlan() {
+    public Plan getPlan()
+    {
         return plan;
     }
 
@@ -69,7 +75,8 @@ public class Student {
      * @return statystyki w postaci napisu
      */
     @Override
-    public String toString() {
+    public String toString()
+    {
         StringBuilder returnValue = new StringBuilder();
         for (Map.Entry<StatisticType, Integer> stat : statistics.entrySet()) {
             returnValue.append(stat.getKey());

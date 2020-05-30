@@ -13,12 +13,10 @@ import java.util.List;
 public class Simulation {
     private final List<Event> weekendEvents;
     private final Student student;
-    private final List<Subject> availableSubjects;
 
-    public Simulation(List<Event> weekendEvents, Student student, List<Subject> availableSubjects) {
+    public Simulation(List<Event> weekendEvents, Student student) {
         this.weekendEvents = weekendEvents;
         this.student = student;
-        this.availableSubjects = availableSubjects;
     }
 
     public void run(Iterator<Day> daysToSimulate) {

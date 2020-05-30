@@ -11,7 +11,10 @@ import java.util.Random;
  * Jeżeli simulation.student spełni wymagania to otrzyma tymczasowy boost do danej statystyki, w innym wypadku otrzyma ujemny.
  */
 
-public class EventAfterClasses extends EventBase {
+public class EventAfterClasses implements Event {
+    String description;
+    StatisticType typeOfStatistic;
+    int requiredStatistic;
     /**
      * Stworzenie nowego wydarzenia po zajęciach
      * @param description opis wydarzenia
@@ -30,7 +33,7 @@ public class EventAfterClasses extends EventBase {
      * Stworzenie nowego bonusu do statystyk
      */
     @Override
-    public void evaluateStudent(Student student) {
+    public void apply(Student student) {
         Random random= new Random();
         int boost= random.nextInt(3)+2;
         int days= random.nextInt(3)+1;
