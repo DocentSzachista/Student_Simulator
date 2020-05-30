@@ -4,7 +4,7 @@ import simulation.student.Student;
 import simulation.subject.Subject;
 
 /**
- * Interfejs Event mają
+ * Interfejs Event służący do przeprowadzania wydarzeń
  */
 public interface Event {
 
