@@ -7,7 +7,6 @@ import simulation.student.Notes;
 import simulation.student.Student;
 import simulation.subject.Subject;
 
-import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
@@ -31,13 +30,39 @@ public class Simulation {
         {
             for(Day currentDay : Day.values())
             {
-                applyEventsAccordingToDay(currentDay);
+                applyEventsAccordingToDay(currentDay, week);
             }
+        }
+        semesterSummary();
+    }
+
+    private void semesterSummary()
+    {
+        Notes notes = student.getNotes();
+        List<Subject> subjects = notes.getSubjects();
+        System.out.println("\nKoniec semestru. Wyniki studenta to:\n");
+        float allMarks = 0;
+        int marksAmount = 0;
+        for (Subject subject : subjects)
+        {
+            float score = notes.getAverageFor(subject);
+            allMarks += score;
+            marksAmount++;
+            System.out.println("Średnia z: " + subject + " to: " + score);
+        }
+        float average = Math.round(allMarks / marksAmount * 100f) / 100f;
+        if(average < 3f)
+        {
+            System.out.println("\nStudent nie zdał ze średnią: " + average + " powodzenia na poprawce!");
+        }
+        else
+        {
+            System.out.println("\nStudent zdał ze średnią : " + average + " gratulacje!");
         }
     }
 
-    private void applyEventsAccordingToDay(Day currentDay) {
-        System.out.println("Dziś jest " + currentDay.name());
+    private void applyEventsAccordingToDay(Day currentDay, int week) {
+        System.out.println("Dziś jest " + currentDay.name() + " tydzień " + week);
 
         if (currentDay == Day.SATURDAY || currentDay == Day.SUNDAY) {
             System.out.println("Weekend! Brak zajęć");

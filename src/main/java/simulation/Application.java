@@ -42,7 +42,7 @@ public class Application
 
         RandomPlanGenerator randomPlanGenerator = new RandomPlanGenerator(availableSubjects);
         StudentStatGenerator statGenerator = new StudentStatGenerator();
-        Simulation simulation = new Simulation(emptyList(), new Student(statGenerator.generate(), randomPlanGenerator.generate()));
+        Simulation simulation = new Simulation(database.getWeekendEvents(), new Student(statGenerator.generate(), randomPlanGenerator.generate()));
 
         simulation.run(10);
     }

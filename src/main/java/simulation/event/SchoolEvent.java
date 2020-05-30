@@ -36,21 +36,20 @@ public class SchoolEvent implements Event {
     public void apply(Student student, Subject subject)
     {
         System.out.println(description);
+        float markToAdd = 2f;
         int statDifference = student.getStatistic(typeOfStatistic) - requiredStatistic;
         if(statDifference >= 0) {
-            float markToAdd = 3f;
+            markToAdd = 3f;
             if(statDifference >= requiredStatistic)
                 markToAdd = 5f;
             else if((float)statDifference >= (float)requiredStatistic * .5f)
                 markToAdd = 4f;
 
             System.out.println("Udało się, otrzymałeś ocene: " + markToAdd);
-            student.getNotes().add(subject, markToAdd);
         }
         else
-        {
             System.out.println("Nie udało się, otrzymałeś ocene: 2");
-            student.getNotes().add(subject, 2f);
-        }
+
+        student.getNotes().add(subject, markToAdd);
     }
 }
