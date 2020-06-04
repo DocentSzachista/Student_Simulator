@@ -1,0 +1,91 @@
+Index: src/main/java/simulation/Application.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package simulation;\r\n\r\nimport simulation.event.EventsDatabase;\r\nimport simulation.plan.Day;\r\nimport simulation.plan.Plan;\r\nimport simulation.plan.RandomPlanGenerator;\r\nimport simulation.student.Student;\r\nimport simulation.student.StudentStatGenerator;\r\nimport simulation.subject.Subject;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.Arrays;\r\nimport java.util.List;\r\n\r\nimport static java.util.Collections.emptyList;\r\n\r\n/**\r\n * <p>Program mający za zadanie utworzyć studenta i poddać go próbie przetrwania pierwszego semestru\r\n * na uczelni.</p>\r\n *\r\n * @author Damian Raczkowski\r\n * @author Jan Malek\r\n * @version 2.0\r\n * @since 30-05-2020\r\n * Klasa Application odpowiada za wygenerowanie studenta, planu, oraz wydarzeń dla przedmiotów oraz weekendów\r\n */\r\npublic class Application\r\n{\r\n    /**\r\n    * Główna metoda programu\r\n    */\r\n    public static void main(String[] args)\r\n    {\r\n        List<Subject> availableSubjects = new ArrayList<>();\r\n\r\n        EventsDatabase database = new EventsDatabase();\r\n\r\n        availableSubjects.add(new Subject(\"Matematyka\", database.getSchoolEvents()));\r\n        availableSubjects.add(new Subject(\"Filozofia\", database.getSchoolEvents()));\r\n        availableSubjects.add(new Subject(\"Programowanie\", database.getSchoolEvents()));\r\n        availableSubjects.add(new Subject(\"Miernictwo\", database.getSchoolEvents()));\r\n        availableSubjects.add(new Subject(\"Fizyka\", database.getSchoolEvents()));\r\n\r\n        RandomPlanGenerator randomPlanGenerator = new RandomPlanGenerator(availableSubjects);\r\n        StudentStatGenerator statGenerator = new StudentStatGenerator();\r\n        Simulation simulation = new Simulation(database.getWeekendEvents(), new Student(statGenerator.generate(), randomPlanGenerator.generate()));\r\n\r\n        simulation.run(10);\r\n    }\r\n}\r\n\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/simulation/Application.java	(revision a57a2ca2ef4152a0758e3e49e460784d2fd1976e)
++++ src/main/java/simulation/Application.java	(date 1591284563233)
+@@ -49,5 +49,3 @@
+     }
+ }
+ 
+-
+-
+Index: .idea/modules.xml
+===================================================================
+--- .idea/modules.xml	(revision a57a2ca2ef4152a0758e3e49e460784d2fd1976e)
++++ .idea/modules.xml	(revision a57a2ca2ef4152a0758e3e49e460784d2fd1976e)
+@@ -1,8 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="ProjectModuleManager">
+-    <modules>
+-      <module fileurl="file://$PROJECT_DIR$/.idea/Student_Simulator.iml" filepath="$PROJECT_DIR$/.idea/Student_Simulator.iml" />
+-    </modules>
+-  </component>
+-</project>
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ExternalStorageConfigurationManager\" enabled=\"true\" />\r\n  <component name=\"JavadocGenerationManager\">\r\n    <option name=\"OUTPUT_DIRECTORY\" value=\"$PROJECT_DIR$/javadoc\" />\r\n    <option name=\"OPTION_DOCUMENT_TAG_AUTHOR\" value=\"true\" />\r\n    <option name=\"OPTION_DOCUMENT_TAG_VERSION\" value=\"true\" />\r\n    <option name=\"OTHER_OPTIONS\" value=\"-encoding UTF-8 -charset UTF-8 -docencoding UTF-8\" />\r\n  </component>\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_1_8\" default=\"false\" project-jdk-name=\"13\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/out\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/misc.xml	(revision a57a2ca2ef4152a0758e3e49e460784d2fd1976e)
++++ .idea/misc.xml	(date 1590845959680)
+@@ -1,6 +1,9 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="ExternalStorageConfigurationManager" enabled="true" />
++  <component name="FrameworkDetectionExcludesConfiguration">
++    <file type="web" url="file://$PROJECT_DIR$" />
++  </component>
+   <component name="JavadocGenerationManager">
+     <option name="OUTPUT_DIRECTORY" value="$PROJECT_DIR$/javadoc" />
+     <option name="OPTION_DOCUMENT_TAG_AUTHOR" value="true" />
+Index: .idea/gradle.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"GradleMigrationSettings\" migrationVersion=\"1\" />\r\n  <component name=\"GradleSettings\">\r\n    <option name=\"linkedExternalProjectsSettings\">\r\n      <GradleProjectSettings>\r\n        <option name=\"delegatedBuild\" value=\"true\" />\r\n        <option name=\"testRunner\" value=\"GRADLE\" />\r\n        <option name=\"distributionType\" value=\"DEFAULT_WRAPPED\" />\r\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\r\n        <option name=\"gradleJvm\" value=\"1.8\" />\r\n        <option name=\"modules\">\r\n          <set>\r\n            <option value=\"$PROJECT_DIR$\" />\r\n          </set>\r\n        </option>\r\n        <option name=\"useQualifiedModuleNames\" value=\"true\" />\r\n      </GradleProjectSettings>\r\n    </option>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/gradle.xml	(revision a57a2ca2ef4152a0758e3e49e460784d2fd1976e)
++++ .idea/gradle.xml	(date 1590845941505)
+@@ -6,9 +6,9 @@
+       <GradleProjectSettings>
+         <option name="delegatedBuild" value="true" />
+         <option name="testRunner" value="GRADLE" />
+-        <option name="distributionType" value="DEFAULT_WRAPPED" />
++        <option name="distributionType" value="WRAPPED" />
+         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+-        <option name="gradleJvm" value="1.8" />
++        <option name="gradleJvm" value="adopt-openj9-1.8" />
+         <option name="modules">
+           <set>
+             <option value="$PROJECT_DIR$" />
+Index: .idea/Student_Simulator.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<module type=\"JAVA_MODULE\" version=\"4\">\r\n  <component name=\"NewModuleRootManager\" inherit-compiler-output=\"true\">\r\n    <exclude-output />\r\n    <content url=\"file://$MODULE_DIR$\" />\r\n    <orderEntry type=\"inheritedJdk\" />\r\n    <orderEntry type=\"sourceFolder\" forTests=\"false\" />\r\n  </component>\r\n</module>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/Student_Simulator.iml	(revision a57a2ca2ef4152a0758e3e49e460784d2fd1976e)
++++ .idea/Student_Simulator.iml	(date 1590845964574)
+@@ -1,9 +1,2 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+-<module type="JAVA_MODULE" version="4">
+-  <component name="NewModuleRootManager" inherit-compiler-output="true">
+-    <exclude-output />
+-    <content url="file://$MODULE_DIR$" />
+-    <orderEntry type="inheritedJdk" />
+-    <orderEntry type="sourceFolder" forTests="false" />
+-  </component>
+-</module>
+\ No newline at end of file
++<module type="JAVA_MODULE" version="4" />
+\ No newline at end of file

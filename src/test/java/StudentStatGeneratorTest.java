@@ -11,7 +11,7 @@ public class StudentStatGeneratorTest
 	public void StatGeneratorTest()
 	{
 		StudentStatGenerator generator = new StudentStatGenerator();
-		Map<StatisticType, Integer> stats = generator.generate(1);
+		Map<StatisticType, Integer> stats = generator.generate(0);
 
 		Assert.assertTrue(stats.get(StatisticType.Spryt) == 9);
 		Assert.assertTrue(stats.get(StatisticType.Inteligencja) == 5);
