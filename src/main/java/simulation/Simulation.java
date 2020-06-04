@@ -68,13 +68,9 @@ public class Simulation
         }
         float average = Math.round(allMarks / marksAmount * 100f) / 100f;
         if(average < 3f)
-        {
             System.out.println("\nStudent nie zdał ze średnią: " + average + " powodzenia na poprawce!");
-        }
         else
-        {
-            System.out.println("\nStudent zdał ze średnią : " + average + " gratulacje!");
-        }
+            System.out.println("\nStudent zdał ze średnią: " + average + " gratulacje!");
     }
 
     /**
