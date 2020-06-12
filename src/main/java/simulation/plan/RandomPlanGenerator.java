@@ -24,7 +24,7 @@ public class RandomPlanGenerator {
      *
      * @return Wygenerowany plan
      */
-    public Plan generateInternal(long seed) {
+    private Plan generateInternal(long seed) {
         Map<Day, List<Subject>> subjectsByDay = new HashMap<>();
         Random rand = new Random(seed);
         for (Day currentDay : Day.values()) {

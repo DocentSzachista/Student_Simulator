@@ -52,25 +52,35 @@ public class Simulation
     /**
      * Metoda sprawdzająca, czy symulacja zakończyła się powodzeniem, oraz wyświetlająca końcowe wyniki studenta
      */
-    private void semesterSummary()
-    {
+    private void semesterSummary() {
         Notes notes = student.getNotes();
         List<Subject> subjects = notes.getSubjects();
         System.out.println("\nKoniec semestru. Wyniki studenta to:\n");
+
+        float average = summaryLoop(notes, subjects);
+        if (average < 3f)
+            System.out.println("\nStudent nie zdał ze średnią: " + average + " powodzenia na poprawce!");
+        else
+            System.out.println("\nStudent zdał ze średnią: " + average + " gratulacje!");
+    }
+
+    /**
+     * Pętla zliczająca oceny
+     *
+     * @param notes    dziennik studenta
+     * @param subjects przedmioty na które uczęszczał
+     * @return średnia ocen
+     */
+    private float summaryLoop(Notes notes, List<Subject> subjects) {
         float allMarks = 0;
         int marksAmount = 0;
-        for (Subject subject : subjects)
-        {
+        for (Subject subject : subjects) {
             float score = notes.getAverageFor(subject);
             allMarks += score;
             marksAmount++;
             System.out.println("Średnia z: " + subject + " to: " + score);
         }
-        float average = Math.round(allMarks / marksAmount * 100f) / 100f;
-        if(average < 3f)
-            System.out.println("\nStudent nie zdał ze średnią: " + average + " powodzenia na poprawce!");
-        else
-            System.out.println("\nStudent zdał ze średnią: " + average + " gratulacje!");
+        return Math.round(allMarks / marksAmount * 100f) / 100f;
     }
 
     /**
@@ -78,8 +88,7 @@ public class Simulation
      * @param currentDay Dla jakiego dnia ma być przeprowadzone wydarzenie
      * @param week Numer tygodnia w którym ten dzień się znajduje
      */
-    private void applyEventsAccordingToDay(Day currentDay, int week)
-    {
+    private void applyEventsAccordingToDay(Day currentDay, int week) {
         System.out.println("Dziś jest " + currentDay.name() + " tydzień " + week);
 
         if (currentDay == Day.SATURDAY || currentDay == Day.SUNDAY) {
