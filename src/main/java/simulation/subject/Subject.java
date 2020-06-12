@@ -16,7 +16,8 @@ public class Subject {
 
     /**
      * Konstruktor klasy
-     * @param name Nazwa przedmiotu
+     *
+     * @param name           Nazwa przedmiotu
      * @param possibleEvents Lista wydarzeń jakie mogą się na nim zdarzyć
      */
     public Subject(String name, List<Event> possibleEvents) {
@@ -37,6 +38,7 @@ public class Subject {
 
     /**
      * Metoda losująca wydarzenie, które ma się zdarzyć na tym przedmiocie
+     *
      * @return Wylosowane wydarzenie
      */
     public Event randomEvent() {

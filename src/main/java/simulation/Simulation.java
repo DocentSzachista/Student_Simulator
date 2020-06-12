@@ -97,6 +97,7 @@ public class Simulation
 
     /**
      * Metoda do przeprowadzania wydarzenia dla przedmiotu
+     *
      * @param currentDaySubjects Lista przedmiotów, dla których mają zostać przeprowadzone wydarzenia
      */
     private void applyEverySubjectEvents(List<Subject> currentDaySubjects) {

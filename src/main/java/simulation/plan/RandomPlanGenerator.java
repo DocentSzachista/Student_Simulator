@@ -27,7 +27,6 @@ public class RandomPlanGenerator {
     public Plan generateInternal(long seed) {
         Map<Day, List<Subject>> subjectsByDay = new HashMap<>();
         Random rand = new Random(seed);
-        int subjectCount = availableSubjects.size();
         for (Day currentDay : Day.values()) {
             int index = rand.nextInt(availableSubjects.size());
             List<Subject> subjects = Arrays.asList(availableSubjects.get(index));

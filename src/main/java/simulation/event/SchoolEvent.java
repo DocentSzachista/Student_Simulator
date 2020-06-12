@@ -11,10 +11,10 @@ import simulation.subject.Subject;
  */
 
 public class SchoolEvent implements Event {
+    private final String description;
+    private final StatisticType typeOfStatistic;
+    private final int requiredStatistic;
 
-    String description;
-    StatisticType typeOfStatistic;
-    int requiredStatistic;
     /**
      * Stworzenie instancji simulation.event.ScientificEvent
      *
@@ -22,33 +22,32 @@ public class SchoolEvent implements Event {
      * @param typeOfStatistic typ sprawdzanej statystyki
      * @param requirements    wymagana wartosc statystyki
      */
-    public SchoolEvent (String description, StatisticType typeOfStatistic, int requirements ){
-        this.description=description;
-        this.typeOfStatistic=typeOfStatistic;
-        this.requiredStatistic=requirements;
+    public SchoolEvent(String description, StatisticType typeOfStatistic, int requirements) {
+        this.description = description;
+        this.typeOfStatistic = typeOfStatistic;
+        this.requiredStatistic = requirements;
     }
 
     /**
      * Metoda sprawdza czy simulation.student spełnia wymogi wydarzenia
+     *
      * @param student na którym ma zostać dokonane sprawdzenie.
-     * @param przedmiot na którym teraz student przebywa.
+     * @param subject na którym teraz student przebywa.
      */
     @Override
-    public void apply(Student student, Subject subject)
-    {
+    public void apply(Student student, Subject subject) {
         System.out.println(description);
         float markToAdd = 2f;
         int statDifference = student.getStatistic(typeOfStatistic) - requiredStatistic;
-        if(statDifference >= 0) {
+        if (statDifference >= 0) {
             markToAdd = 3f;
-            if(statDifference >= requiredStatistic)
+            if (statDifference >= requiredStatistic)
                 markToAdd = 5f;
-            else if((float)statDifference >= (float)requiredStatistic * .5f)
+            else if ((float) statDifference >= (float) requiredStatistic * .5f)
                 markToAdd = 4f;
 
             System.out.print("Udało się, ");
-        }
-        else
+        } else
             System.out.print("Nie udało się, ");
 
         System.out.println("otrzymałeś ocenę " + markToAdd);
