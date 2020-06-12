@@ -12,7 +12,8 @@ import java.util.Random;
  * Jeżeli simulation.student spełni wymagania to otrzyma tymczasowy boost do danej statystyki, w innym wypadku otrzyma ujemny.
  */
 
-public class WeekendEvent implements Event {
+public class WeekendEvent implements Event
+{
     private final String description;
     private final StatisticType typeOfStatistic;
     private final int requiredStatistic;
@@ -24,7 +25,8 @@ public class WeekendEvent implements Event {
      * @param typeOfStatistic   typ statystyki jaką wydarzenie sprawdza
      * @param requiredStatistic wymagana ilość statystyki
      */
-    public WeekendEvent(String description, StatisticType typeOfStatistic, int requiredStatistic) {
+    public WeekendEvent(String description, StatisticType typeOfStatistic, int requiredStatistic)
+    {
         this.description = description;
         this.typeOfStatistic = typeOfStatistic;
         this.requiredStatistic = requiredStatistic;
@@ -36,13 +38,15 @@ public class WeekendEvent implements Event {
      * @param student pobieranie informacji o statystyce studenta i porównywanie jej z ze statystyką wydarzenia
      */
     @Override
-    public void apply(Student student, Subject subject) {
+    public void apply(Student student, Subject subject)
+    {
         Random random = new Random();
         int boost = random.nextInt(3) + 2;
         int days = random.nextInt(3) + 1;
         StatisticChange change;
         System.out.println(description);
-        if (student.getStatistic(typeOfStatistic) > requiredStatistic) {
+        if (student.getStatistic(typeOfStatistic) > requiredStatistic)
+        {
             change = new StatisticChange(typeOfStatistic, boost, days);
             System.out.println("Udało się, Twoja/Twój " + typeOfStatistic + " zwiększyła się o " + boost + " pkt na " + days + " dni/dzień");
         } else {

@@ -7,7 +7,8 @@ import java.util.*;
 /**
  * Klasa generująca losowy plan zajęć dla studenta, na podstawie listy dostępnych przedmiotów
  */
-public class RandomPlanGenerator {
+public class RandomPlanGenerator
+{
     private final List<Subject> availableSubjects;
 
     /**
@@ -24,10 +25,12 @@ public class RandomPlanGenerator {
      *
      * @return Wygenerowany plan
      */
-    private Plan generateInternal(long seed) {
+    private Plan generateInternal(long seed)
+    {
         Map<Day, List<Subject>> subjectsByDay = new HashMap<>();
         Random rand = new Random(seed);
-        for (Day currentDay : Day.values()) {
+        for (Day currentDay : Day.values())
+        {
             int index = rand.nextInt(availableSubjects.size());
             List<Subject> subjects = Arrays.asList(availableSubjects.get(index));
             subjectsByDay.put(currentDay, subjects);

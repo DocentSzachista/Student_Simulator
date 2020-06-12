@@ -52,7 +52,8 @@ public class Simulation
     /**
      * Metoda sprawdzająca, czy symulacja zakończyła się powodzeniem, oraz wyświetlająca końcowe wyniki studenta
      */
-    private void semesterSummary() {
+    private void semesterSummary()
+    {
         Notes notes = student.getNotes();
         List<Subject> subjects = notes.getSubjects();
         System.out.println("\nKoniec semestru. Wyniki studenta to:\n");
@@ -71,10 +72,12 @@ public class Simulation
      * @param subjects przedmioty na które uczęszczał
      * @return średnia ocen
      */
-    private float summaryLoop(Notes notes, List<Subject> subjects) {
+    private float summaryLoop(Notes notes, List<Subject> subjects)
+    {
         float allMarks = 0;
         int marksAmount = 0;
-        for (Subject subject : subjects) {
+        for (Subject subject : subjects)
+        {
             float score = notes.getAverageFor(subject);
             allMarks += score;
             marksAmount++;
@@ -89,10 +92,12 @@ public class Simulation
      * @param currentDay Dla jakiego dnia ma być przeprowadzone wydarzenie
      * @param week       Numer tygodnia w którym ten dzień się znajduje
      */
-    private void applyEventsAccordingToDay(Day currentDay, int week) {
+    private void applyEventsAccordingToDay(Day currentDay, int week)
+    {
         System.out.println("Dziś jest " + currentDay.name() + " tydzień " + week);
 
-        if (currentDay == Day.SATURDAY || currentDay == Day.SUNDAY) {
+        if (currentDay == Day.SATURDAY || currentDay == Day.SUNDAY)
+        {
             System.out.println("Weekend! Brak zajęć");
             Event event = getRandomWeekendEvent();
             event.apply(student, null);
@@ -110,8 +115,10 @@ public class Simulation
      *
      * @param currentDaySubjects Lista przedmiotów, dla których mają zostać przeprowadzone wydarzenia
      */
-    private void applyEverySubjectEvents(List<Subject> currentDaySubjects) {
-        for (Subject subject : currentDaySubjects) {
+    private void applyEverySubjectEvents(List<Subject> currentDaySubjects)
+    {
+        for (Subject subject : currentDaySubjects)
+        {
             Notes notes = student.getNotes();
             System.out.println("Dzisiejsze zajęcia to: " + subject);
             System.out.println("Obecna średnia z " + subject + " to: " + notes.getAverageFor(subject));

@@ -10,7 +10,8 @@ import simulation.subject.Subject;
  * a jesli nie to dodaje ocene negatywna do przedmiotu.
  */
 
-public class SchoolEvent implements Event {
+public class SchoolEvent implements Event
+{
     private final String description;
     private final StatisticType typeOfStatistic;
     private final int requiredStatistic;
@@ -22,7 +23,8 @@ public class SchoolEvent implements Event {
      * @param typeOfStatistic typ sprawdzanej statystyki
      * @param requirements    wymagana wartosc statystyki
      */
-    public SchoolEvent(String description, StatisticType typeOfStatistic, int requirements) {
+    public SchoolEvent(String description, StatisticType typeOfStatistic, int requirements)
+    {
         this.description = description;
         this.typeOfStatistic = typeOfStatistic;
         this.requiredStatistic = requirements;
@@ -35,11 +37,13 @@ public class SchoolEvent implements Event {
      * @param subject na którym teraz student przebywa.
      */
     @Override
-    public void apply(Student student, Subject subject) {
+    public void apply(Student student, Subject subject)
+    {
         System.out.println(description);
         float markToAdd = 2f;
         int statDifference = student.getStatistic(typeOfStatistic) - requiredStatistic;
-        if (statDifference >= 0) {
+        if (statDifference >= 0)
+        {
             markToAdd = 3f;
             if (statDifference >= requiredStatistic)
                 markToAdd = 5f;

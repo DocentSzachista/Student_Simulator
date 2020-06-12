@@ -3,6 +3,7 @@ package simulation.student;
 /**
  * enum przechowywujacy informacje o typach statystyk
  */
-public enum StatisticType {
+public enum StatisticType
+{
     Inteligencja, Lenistwo, Spryt
 }

@@ -12,7 +12,8 @@ import java.util.Map;
  * simulation.student.Student posiada statystki, na podstawie ktorych sprawdzana jest wiedza podczas wydarzen z
  * przedmiotow oraz jego zachowania poza uczelnią.
  */
-public class Student {
+public class Student
+{
     private final Map<StatisticType, Integer> statistics;
 
     private final Plan plan;
