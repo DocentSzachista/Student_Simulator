@@ -85,8 +85,9 @@ public class Simulation
 
     /**
      * Metoda, która przeporwadza wydarzenie dla każdego dnia
+     *
      * @param currentDay Dla jakiego dnia ma być przeprowadzone wydarzenie
-     * @param week Numer tygodnia w którym ten dzień się znajduje
+     * @param week       Numer tygodnia w którym ten dzień się znajduje
      */
     private void applyEventsAccordingToDay(Day currentDay, int week) {
         System.out.println("Dziś jest " + currentDay.name() + " tydzień " + week);
