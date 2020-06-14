@@ -1,18 +1,13 @@
 package simulation;
 
 import simulation.event.EventsDatabase;
-import simulation.plan.Day;
-import simulation.plan.Plan;
 import simulation.plan.RandomPlanGenerator;
 import simulation.student.Student;
 import simulation.student.StudentStatGenerator;
 import simulation.subject.Subject;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-
-import static java.util.Collections.emptyList;
 
 /**
  * <p>Program mający za zadanie utworzyć studenta i poddać go próbie przetrwania pierwszego semestru
@@ -46,6 +41,7 @@ public class Application
         Simulation simulation = new Simulation(database.getWeekendEvents(), new Student(statGenerator.generate(), randomPlanGenerator.generate()));
 
         simulation.run(10);
+
     }
 }
 
