@@ -31,8 +31,8 @@ public class EventsDatabase
 	 */
 	public EventsDatabase()
 	{
-		weekendEvents = dataBase("WeekendEvents.txt");
-		schoolEvents = dataBase("SchoolEvents.txt");
+		weekendEvents = dataBase("baza/WeekendEvents.txt");
+		schoolEvents = dataBase("baza/SchoolEvents.txt");
 
 	}
 	private List<Event> dataBase(String fileName)
